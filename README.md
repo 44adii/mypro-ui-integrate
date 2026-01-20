@@ -1,92 +1,103 @@
-# ⚖️ AI Legal Assistant
+# ⚖️ NyayaGPT: AI Legal Assistant
 
-Welcome to the **AI Legal Assistant**!  
-This project is an interactive web app that leverages multi-agent AI to help users analyze legal issues, identify relevant Indian Penal Code (IPC) sections, retrieve precedent cases, and generate formal legal documents—all from a plain English description.
+**NyayaGPT** is an advanced AI-powered legal assistant designed to help users understand Indian Law. It leverages a **Multi-Agent System** and **Retrieval-Augmented Generation (RAG)** to analyze legal queries, identify relevant IPC sections, find precedent cases, and draft formal legal documents in both **English and Hindi**.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- 📝 **Plain English Input:** Describe your legal issue in your own words.
-- 🤖 **Multi-Agent AI Workflow:** Specialized agents extract facts, identify IPC sections, retrieve case law, and generate documents.
-- 📚 **Retrieval-Augmented Generation (RAG):** Combines semantic search with generative AI for accurate, grounded responses.
-- 🧠 **Precedent Search:** Finds relevant judicial precedents for your scenario.
-- 📄 **Formal Document Generation:** Outputs a structured legal summary or draft document.
-- 🌐 **Streamlit Web App:** Clean, interactive, and user-friendly interface.
+*   **🗣️ Multilingual Support**: Interact in plain English or Hindi.
+*   **🤖 Multi-Agent Architecture**: Five specialized AI agents work together:
+    *   **Case Intake Agent**: Analyzes identifiers and categorizes the case.
+    *   **IPC Section Agent**: Finds relevant Indian Penal Code sections.
+    *   **Legal Precedent Agent**: Searches for similar past court judgments.
+    *   **Legal Drafter Agent**: Drafts professional legal notices/FIRs.
+    *   **Lawyer Notifier Agent**: Connects users with nearby lawyers via email.
+*   **📚 RAG (Retrieval-Augmented Generation)**: Uses vector search (Pinecone) to ground answers in actual legal statutes.
+*   **⚡ High Performance**: Powered by **Google Gemini 1.5 Flash** (1M Token Context) for deep analysis.
+*   **☁️ Cloud Native**: Vectors stored in **Pinecone** for scalable, fast retrieval.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Python**
-- **Streamlit** (UI)
-- **CrewAI** (Multi-agent orchestration)
-- **dotenv** (Environment management)
-- **ChromaDB** & **LangChain** (Semantic search, if enabled)
+| Component | Technology |
+| :--- | :--- |
+| **LLM** | Google Gemini 1.5 Flash |
+| **Orchestration** | CrewAI + LangChain |
+| **Vector DB** | Pinecone (Serverless) |
+| **Frontend** | Streamlit |
+| **Embeddings** | HuggingFace (`sentence-transformers`) |
+| **Search** | Tavily (Web Search for Precedents) |
 
 ---
 
-## 🖥️ How to Run Locally
+## ⚙️ Installation & Setup
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/yourusername/ai-legal-assistant-crewai.git
-   cd ai-legal-assistant-crewai
-   ```
+Follow these steps to run the project locally.
 
-2. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/44adii/mypro1.git
+cd mypro1
+```
 
-3. **Set up environment variables:**
-   - Copy `.env_template` to `.env` and fill in required keys (API keys, etc.).
+### 2. Install Dependencies
+Ensure you have Python 3.10+ installed.
+```bash
+pip install -r requirements.txt
+```
 
-4. **Run the app:**
-   ```sh
-   streamlit run app.py
-   ```
+### 3. Configure Environment Variables
+Create a `.env` file in the root directory and add your API keys:
 
-5. **Open in your browser:**  
-   Streamlit will provide a local URL (usually http://localhost:8501).
+```env
+# AI Models
+GOOGLE_API_KEY=your_google_api_key
+
+# Vector Database
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_INDEX_NAME=nyaya-legal-assistant
+
+# Search
+TAVILY_API_KEY=your_tavily_api_key
+
+# Email (Optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+```
+
+### 4. Run the Application
+```bash
+streamlit run app.py
+```
+The app will open in your browser at `http://localhost:8501`.
 
 ---
 
-## 📝 Usage
+## 📂 Project Structure
 
-1. Enter your legal issue in the text area (e.g., “Someone broke into my house at night and stole my valuables.”).
-2. Click **"Run Legal Assistant"**.
-3. Wait for the AI to analyze your case.
-4. View the structured output, including relevant IPC sections, precedent cases, and a formal legal summary.
+```text
+NyayaGPT/
+├── agents/                 # AI Agent definitions (CrewAI)
+├── tasks/                  # Task definitions for agents
+├── tools/                  # Custom tools (Search, Email)
+├── utils/                  # Utility scripts (Retry logic)
+├── temporary/              # Archive of setup scripts
+├── app.py                  # Main Streamlit application
+├── multilingual_vectordb_builder.py # Script to ingest data to Pinecone
+└── requirements.txt        # Python dependencies
+```
 
 ---
 
-## 🧩 Agentic AI & RAG
+## 🤝 Contributors
 
-- **Agentic AI:** The backend uses CrewAI to orchestrate multiple specialized agents, each handling a part of the legal reasoning process.
-- **RAG (Retrieval-Augmented Generation):** The system retrieves relevant legal sections and case law, then uses this information to generate accurate, context-aware responses.
-
----
-
-## 📦 Extending the Project
-
-- Add more legal codes (e.g., CrPC, Evidence Act) by updating the data and agent logic.
-- Integrate additional data sources or APIs for richer precedent search.
-- Enhance the UI for multi-turn conversations or clarification prompts.
+*   **[44adii](https://github.com/44adii)** - Lead Developer
 
 ---
 
 ## ⚠️ Disclaimer
-
-> This tool is for informational purposes only and **does not constitute legal advice**. For professional legal counsel, please consult a qualified attorney.
-
----
-
-## 🙌 Contributing
-
-Pull requests and suggestions are welcome!  
-Feel free to open an issue or submit a PR to improve the assistant.
-
----
-
-**Made with ❤️ using Streamlit, CrewAI, and
+*NyayaGPT is an AI tool for informational purposes only. It does not provide professional legal advice. Always consult a qualified attorney for legal matters.*

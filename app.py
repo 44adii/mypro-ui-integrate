@@ -10,9 +10,9 @@ load_dotenv()
 # from crew import legal_assistant_crew
 # from tools.email_tool import send_email_smtp
 
-st.set_page_config(page_title="AI Legal Assistant", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="Legal Scenario Solver", page_icon="🧠", layout="wide")
 
-st.title("⚖️ Personal AI Legal Assistant")
+st.title("⚖️ Legal Scenario Solver")
 st.markdown(
     "Enter a legal problem in plain English or Hindi. This assistant will help you:\n"
     "- Understand the legal issue\n"

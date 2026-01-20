@@ -1,6 +1,6 @@
-# ⚖️ NyayaGPT: AI Legal Assistant
+# ⚖️ Legal Scenario Solver
 
-**NyayaGPT** is an advanced AI-powered legal assistant designed to help users understand Indian Law. It leverages a **Multi-Agent System** and **Retrieval-Augmented Generation (RAG)** to analyze legal queries, identify relevant IPC sections, find precedent cases, and draft formal legal documents in both **English and Hindi**.
+**Legal Scenario Solver** is an advanced AI-powered legal assistant designed to help users understand Indian Law. It leverages a **Multi-Agent System** and **Retrieval-Augmented Generation (RAG)** to analyze legal queries, identify relevant IPC sections, find precedent cases, and draft formal legal documents in both **English and Hindi**.
 
 ---
 

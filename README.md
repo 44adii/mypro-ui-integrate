@@ -1,92 +1,62 @@
-# ⚖️ AI Legal Assistant
+# NyayaGPT - AI Legal Assistant ⚖️
 
-Welcome to the **AI Legal Assistant**!  
-This project is an interactive web app that leverages multi-agent AI to help users analyze legal issues, identify relevant Indian Penal Code (IPC) sections, retrieve precedent cases, and generate formal legal documents—all from a plain English description.
+**NyayaGPT** is a next-generation AI Legal Assistant designed to simplify legal access for everyone. It uses **Google Gemini 2.5 Flash Lite** and a **CrewAI Multi-Agent System** to listen to legal problems, classify them, and automatically draft official legal documents like FIRs.
 
----
+## 🚀 Key Features
 
-## 🚀 Features
-
-- 📝 **Plain English Input:** Describe your legal issue in your own words.
-- 🤖 **Multi-Agent AI Workflow:** Specialized agents extract facts, identify IPC sections, retrieve case law, and generate documents.
-- 📚 **Retrieval-Augmented Generation (RAG):** Combines semantic search with generative AI for accurate, grounded responses.
-- 🧠 **Precedent Search:** Finds relevant judicial precedents for your scenario.
-- 📄 **Formal Document Generation:** Outputs a structured legal summary or draft document.
-- 🌐 **Streamlit Web App:** Clean, interactive, and user-friendly interface.
-
----
+*   **🔐 Dual-Mode Authentication**:
+    *   **Phone Login**: Sign in instantly using a mobile number.
+    *   **Email Login**: Standard email/password authentication.
+*   **🎙️ Voice-First Interface**: Speak your problem efficiently. Uses **Faster-Whisper** for high-accuracy local transcription (Hindi/English support).
+*   **🧠 Multi-Agent Analysis**:
+    *   **Case Intake Agent**: Structures raw unstructured user stories.
+    *   **Advisory Agent**: Determines if a case is Civil/Criminal and advises the immediate next step (e.g., "File FIR").
+    *   **Legal Drafter Agent**: Writes **Standard Official Legal Letters** (To The SHO/Court Format) instead of generic AI text.
+*   **📄 Professional Tools**:
+    *   **PDF Generation**: Instantly download drafted legal documents as formatted PDFs (`jspdf`).
+    *   **Lawyer Connect**: One-click "Email to Lawyer" feature to send drafts to legal professionals.
+*   **⚡ Modern Stack**: Built with **React + Vite** (Frontend) and **FastAPI** (Backend) for blazing fast performance.
 
 ## 🛠️ Tech Stack
 
-- **Python**
-- **Streamlit** (UI)
-- **CrewAI** (Multi-agent orchestration)
-- **dotenv** (Environment management)
-- **ChromaDB** & **LangChain** (Semantic search, if enabled)
+*   **Frontend**: React, TailwindCSS, Lucide Icons, jsPDF
+*   **Backend**: FastAPI, Uvicorn, Python 3.12
+*   **AI Core**: CrewAI (Agent Orchestration), Google Gemini 2.5 Flash Lite (LLM), Faster-Whisper (ASR)
+*   **Deployment**: Ready for local hosting or cloud deployment.
 
----
+## 📦 Installation & Setup
 
-## 🖥️ How to Run Locally
+1.  **Clone the Repo**
+    ```bash
+    git clone https://github.com/44adii/mypro-ui-integrate.git
+    cd mypro-ui-integrate
+    ```
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/yourusername/ai-legal-assistant-crewai.git
-   cd ai-legal-assistant-crewai
-   ```
+2.  **Backend Setup**
+    ```bash
+    cd backend
+    pip install -r requirements.txt
+    
+    # Create .env file with your API Key
+    echo "GOOGLE_API_KEY=your_key_here" > .env
+    
+    # Run Server
+    uvicorn main:app --reload --port 8001
+    ```
 
-2. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+3.  **Frontend Setup**
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    ```
 
-3. **Set up environment variables:**
-   - Copy `.env_template` to `.env` and fill in required keys (API keys, etc.).
+4.  **Usage**
+    *   Open `http://localhost:5173`.
+    *   Click the microphone to speak your legal issue.
+    *   Click **"Analyze"** to get a strategy.
+    *   Click **"Date & Draft"** to get a downloadable PDF.
 
-4. **Run the app:**
-   ```sh
-   streamlit run app.py
-   ```
+## 🛡️ License
 
-5. **Open in your browser:**  
-   Streamlit will provide a local URL (usually http://localhost:8501).
-
----
-
-## 📝 Usage
-
-1. Enter your legal issue in the text area (e.g., “Someone broke into my house at night and stole my valuables.”).
-2. Click **"Run Legal Assistant"**.
-3. Wait for the AI to analyze your case.
-4. View the structured output, including relevant IPC sections, precedent cases, and a formal legal summary.
-
----
-
-## 🧩 Agentic AI & RAG
-
-- **Agentic AI:** The backend uses CrewAI to orchestrate multiple specialized agents, each handling a part of the legal reasoning process.
-- **RAG (Retrieval-Augmented Generation):** The system retrieves relevant legal sections and case law, then uses this information to generate accurate, context-aware responses.
-
----
-
-## 📦 Extending the Project
-
-- Add more legal codes (e.g., CrPC, Evidence Act) by updating the data and agent logic.
-- Integrate additional data sources or APIs for richer precedent search.
-- Enhance the UI for multi-turn conversations or clarification prompts.
-
----
-
-## ⚠️ Disclaimer
-
-> This tool is for informational purposes only and **does not constitute legal advice**. For professional legal counsel, please consult a qualified attorney.
-
----
-
-## 🙌 Contributing
-
-Pull requests and suggestions are welcome!  
-Feel free to open an issue or submit a PR to improve the assistant.
-
----
-
-**Made with ❤️ using Streamlit, CrewAI, and
+MIT License. Free to use for educational and legal aid innovation.

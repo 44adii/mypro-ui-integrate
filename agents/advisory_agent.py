@@ -1,8 +1,12 @@
-from crewai import Agent
-from langchain_google_genai import ChatGoogleGenerativeAI as LLM
+from crewai import Agent, LLM
+import os
 
 # Using the Lite model as per project standard
-llm = LLM(model="gemini/gemini-2.5-flash-lite", temperature=0.1)
+llm = LLM(
+    model="gemini/gemini-2.5-flash-lite", 
+    temperature=0.1,
+    api_key=os.environ.get("GOOGLE_API_KEY")
+)
 
 advisory_agent = Agent(
     role="Legal Advisor & Strategist",

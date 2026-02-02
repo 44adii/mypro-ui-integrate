@@ -16,4 +16,9 @@ langchain-google-genai
 pinecone-client
 langchain-pinecone
 tenacity
+fastapi
+uvicorn
+python-multipart
+faster-whisper
 audio-recorder-streamlit
+langchain-google-genai

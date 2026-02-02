@@ -29,8 +29,10 @@ def execute_crew_with_retry(crew, inputs):
     except Exception as e:
         error_msg = str(e).lower()
         if "rate limit" in error_msg or "429" in error_msg:
-             # Re-raise to let tenacity handle it if it matches retry criteria
+             # Re-raise to let tenacity handle it
              raise e
         else:
-            # If it's not a rate limit, crash immediately (don't retry logic errors)
+            # Explicitly raise the original exception context
+            import traceback
+            traceback.print_exc()
             raise e

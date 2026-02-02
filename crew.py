@@ -20,8 +20,17 @@ from tasks.legal_drafter_task import legal_drafter_task
 from tasks.lawyer_notifier_task import lawyer_notifier_task
 
 
-legal_assistant_crew = Crew(
-    agents=[case_intake_agent, advisory_agent, ipc_section_agent, legal_drafter_agent, lawyer_notifier_agent],
-    tasks=[case_intake_task, advisory_task, ipc_section_task, lawyer_notifier_task, legal_drafter_task],
+# --- 1. Advisory Phase Crew ---
+advisory_crew = Crew(
+    agents=[case_intake_agent, advisory_agent],
+    tasks=[case_intake_task, advisory_task],
+    verbose=True
+)
+
+# --- 2. Drafting Phase Crew ---
+# NOTE: Precedent Agent is temporarily disabled to save tokens/requests
+drafting_crew = Crew(
+    agents=[ipc_section_agent, legal_drafter_agent, lawyer_notifier_agent],
+    tasks=[ipc_section_task, lawyer_notifier_task, legal_drafter_task],
     verbose=True
 )

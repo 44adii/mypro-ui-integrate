@@ -1,10 +1,15 @@
 # lawyer_notifier_agent.py
 
 from crewai import Agent, LLM
+import os
 from tools.lawyer_email_tool import send_lawyer_email_tool
 
 
-llm = LLM(model="gemini/gemini-2.5-flash-lite", temperature=0.2)
+llm = LLM(
+    model="gemini/gemini-2.5-flash-lite", 
+    temperature=0.2,
+    api_key=os.environ.get("GOOGLE_API_KEY")
+)
 
 lawyer_notifier_agent = Agent(
     role="Lawyer Notifier Agent",

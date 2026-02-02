@@ -1,9 +1,14 @@
 # ipc_section_agent.py
 
 from crewai import Agent, LLM
+import os
 from tools.multilingual_ipc_search_tool import search_multilingual_ipc
 
-llm = LLM(model="gemini/gemini-2.5-flash-lite", temperature=0.3)
+llm = LLM(
+    model="gemini/gemini-2.5-flash-lite", 
+    temperature=0.3,
+    api_key=os.environ.get("GOOGLE_API_KEY")
+)
 
 ipc_section_agent = Agent(
     role="IPC Section Agent",

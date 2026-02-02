@@ -1,8 +1,13 @@
 # legal_drafter_agent.py
 
 from crewai import Agent, LLM
+import os
 
-llm = LLM(model="gemini/gemini-2.5-flash-lite", temperature=0.2)
+llm = LLM(
+    model="gemini/gemini-2.5-flash-lite", 
+    temperature=0.2,
+    api_key=os.environ.get("GOOGLE_API_KEY")
+)
 
 legal_drafter_agent = Agent(
     role="Legal Document Drafting Agent",

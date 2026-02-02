@@ -7,11 +7,12 @@ from tasks.advisory_task import advisory_task
 
 ipc_section_task = Task(
     agent=ipc_section_agent,
-    context=[case_intake_task, advisory_task],
     async_execution=True,
     description=(
-        "You are provided with the structured legal context from the Intake and Advisory tasks.\n\n"
-        "1. **Analyze Advisory**: Check the 'legal_type' (Criminal vs Civil) and 'legal_issue' from the Advisory Task output.\n"
+        "You are provided with the following Case Summary and Advisory Analysis:\n"
+        "CASE SUMMARY: {case_summary}\n"
+        "ADVISORY ANALYSIS: {advisory_analysis}\n\n"
+        "1. **Analyze Strategy**: Use the 'legal_type' (Criminal vs Civil) from the Advisory Analysis to guide your search.\n"
         "2. **Search Strategy**: \n"
         "   - If Criminal: Focus on IPC sections related to offenses, penalties, and FIRs.\n"
         "   - If Civil: Focus on property, contract, or specific civil codes (if applicable) or relevant IPC sections for negligence/nuisance.\n"

@@ -1,12 +1,13 @@
 # case_intake_agent.py
 
 from crewai import Agent, LLM
-
+import os
 
 # agent specific LLM - can also be configured din .env file
 llm = LLM(
     model="gemini/gemini-2.5-flash-lite",
-    temperature=0
+    temperature=0,
+    api_key=os.environ.get("GOOGLE_API_KEY")
 )
 
 case_intake_agent = Agent(

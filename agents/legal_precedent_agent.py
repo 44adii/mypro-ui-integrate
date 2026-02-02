@@ -1,9 +1,14 @@
 # legal_precedent_agent.py
 
 from crewai import Agent, LLM
+import os
 from tools.legal_precedent_search_tool import search_legal_precedents
 
-llm = LLM(model="gemini/gemini-2.5-flash-lite", temperature=0)
+llm = LLM(
+    model="gemini/gemini-2.5-flash-lite", 
+    temperature=0,
+    api_key=os.environ.get("GOOGLE_API_KEY")
+)
 
 legal_precedent_agent = Agent(
     role="Legal Precedent Agent",
